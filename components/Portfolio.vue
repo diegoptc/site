@@ -6,9 +6,10 @@
                     <h2 class="ui header">
                         Portfolio
                         <div class="sub header">
-                            Esses são projetos que eu desenvolvi ou participei. A maioria deles foram
-                            projetos freelancer e por isso não posso divulgar o código. Porém os que são
-                            open source tem o link referente ao repositorio.
+                            Esses são projetos que eu desenvolvi ou participei. 
+                            A maioria deles foram projetos freelancer e por isso 
+                            não posso divulgar o código. Porém os que são open source 
+                            tem o link referente ao repositório.
                         </div>
                     </h2>
                 </div>
