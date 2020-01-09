@@ -1,16 +1,21 @@
+const routerBase = process.env.DEPLOY_ENV == 'GH_PAGES' ? {
+  router: {
+    base: 'https://diegodias.dev/'
+  }
+} : {}
 
 export default {
   mode: 'spa',
   /*
   ** Headers of the page
   */
-  router: {
-    base: 'https://diegodias.dev/'
-  },
+  routerBase,
+
   server: {
     port: 3000,
     host: '0.0.0.0'
   },
+
   head: {
     title: 'Diego Dias',
     meta: [
@@ -37,7 +42,8 @@ export default {
   */
   plugins: [
     'plugins/firebase.js',
-    './assets/jquery-3.4.1.min.js'
+    './assets/jquery-3.4.1.min.js',
+    './assets/jspdf.js'
   ],
   /*
   ** Nuxt.js dev-modules

@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="ui grid">
-            <div class="row">
+            <div class="row" v-if="!printCV">
                 <div class="computer tablet only column">
                     <desktop-menu />
                 </div>
@@ -10,13 +10,21 @@
                 </div>
             </div>
             <div class="ui container">
-                <div class="ui stackable grid" style="margin-top: 75px;">
+                <div class="ui stackable grid" style="margin-top: 10px;" :class="printCV ? '' : 'escapeMenu'">
                     <div class="row" id="apresentacao">
                         <div class="six wide column">
                             <img src="../static/foto.jpg" alt="Foto" class="ui circular medium image centered" />
                         </div>
                         <div class="ten wide column">
                             <about />
+                        </div>
+                    </div>
+                    <div class="two columns row centered" v-if="!printCV">
+                        <div class="column right aligned">
+                            <button class="ui button" @click="downloadCV">Download CV</button>
+                        </div>
+                        <div class="column left aligned">
+                            <a class="ui red button" href="mailto:diegodiasptc@gmail.com">Contato</a>
                         </div>
                     </div>
                     <div class="ui divider"></div>
@@ -72,7 +80,20 @@ export default {
         Portfolio
     },
 
+    data(){
+        return {
+            printCV: false
+        }
+    },
+
+    methods: {
+        downloadCV: function(){
+            window.open('https://firebasestorage.googleapis.com/v0/b/website-curriculo.appspot.com/o/Diego%20Dias.pdf?alt=media&token=a4d9c43a-6ffd-444d-8352-8faf9412d979')
+        }
+    }
 }
+
+
 </script>
 
 <style scoped>
@@ -82,5 +103,9 @@ export default {
             margin-left: 3em !important;
             margin-right: 3em !important;
         }
+    }
+
+    .escapeMenu {
+        margin-top: 75px !important;
     }
 </style>
