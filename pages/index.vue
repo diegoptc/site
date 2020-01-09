@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div class="ui container">
-                <div class="ui stackable grid" style="margin-top: 10px;" :class="printCV ? '' : 'escapeMenu'">
+                <div class="ui stackable grid" style="margin-top: 20px;" :class="printCV ? '' : 'escapeMenu'">
                     <div class="row" id="apresentacao">
                         <div class="six wide column">
                             <img src="../static/foto.jpg" alt="Foto" class="ui circular medium image centered" />
@@ -64,6 +64,7 @@ import Skills from '../components/Skills'
 import Experiences from '../components/Experiences'
 import Courses from '../components/Courses'
 import Portfolio from '../components/Portfolio'
+import * as firebase from 'firebase/app'
 
 export default {
     name: 'index',
@@ -86,7 +87,10 @@ export default {
 
     methods: {
         downloadCV: function(){
-            window.open('https://firebasestorage.googleapis.com/v0/b/website-curriculo.appspot.com/o/Diego%20Dias.pdf?alt=media&token=a4d9c43a-6ffd-444d-8352-8faf9412d979')
+            firebase.firestore().collection('website').doc('about').get()
+            .then((snapshot) => {
+                window.open(snapshot.data().curriculo)
+            })
         }
     }
 }
