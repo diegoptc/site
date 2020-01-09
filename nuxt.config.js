@@ -42,8 +42,7 @@ export default {
   */
   plugins: [
     'plugins/firebase.js',
-    './assets/jquery-3.4.1.min.js',
-    './assets/jspdf.js'
+    './assets/jquery-3.4.1.min.js'
   ],
   /*
   ** Nuxt.js dev-modules

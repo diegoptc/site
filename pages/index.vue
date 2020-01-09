@@ -20,10 +20,8 @@
                         </div>
                     </div>
                     <div class="two columns row centered" v-if="!printCV">
-                        <div class="column right aligned">
+                        <div class="ui buttons">
                             <button class="ui button" @click="downloadCV">Download CV</button>
-                        </div>
-                        <div class="column left aligned">
                             <a class="ui red button" href="mailto:diegodiasptc@gmail.com">Contato</a>
                         </div>
                     </div>

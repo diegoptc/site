@@ -37,6 +37,12 @@
                             <a :href="about.github" target="_blank">{{ about.github }}</a>
                         </div>
                     </h4>
+                    <h4 class="ui header">
+                        Lattes:
+                        <div class="sub header">
+                            <a :href="about.lattes" target="_blank">{{ about.lattes }}</a>
+                        </div>
+                    </h4>
                     <h4 class="ui header">Endereço:
                         <div class="sub header">
                             {{ about.endereco }}
