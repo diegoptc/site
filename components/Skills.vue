@@ -12,13 +12,13 @@
                 </h2>
             </div>
             <div class="ten wide column">
-                <div class="row" v-for="(skill, key) in skills" :key="key" style="margin-bottom: 15px;">
+                <div class="row" v-for="(skill, index) in skillsSorted" :key="index" style="margin-bottom: 15px;">
                     <div class="column">
                         <h4 class="ui header">
-                            {{ skill.descricao }}
+                            {{ skills[skill].descricao }}
                             <div class="sub header">
-                                <span v-for="(item, index) in skill.relacionados" :key="index">
-                                    {{ item }}<span v-if="index < skill.relacionados.length - 1">,</span>
+                                <span v-for="(item, index) in skills[skill].relacionados" :key="index">
+                                    {{ item }}<span v-if="index < skills[skill].relacionados.length - 1">,</span>
                                 </span>
                             </div>
                         </h4>
@@ -37,7 +37,8 @@ export default {
 
     data(){
         return {
-            skills: {}
+            skills: {},
+            skillsSorted: []
         }
     },
 
@@ -46,6 +47,14 @@ export default {
         .then((snapshot) => {
             this.skills = snapshot.data()
         })
+    },
+
+    watch: {
+        skills: function() {
+            this.skillsSorted = Object.keys(this.skills).sort((a,b) => {
+                return this.skills[a].ordem - this.skills[b].ordem
+            })
+        }
     }
 }
 </script>

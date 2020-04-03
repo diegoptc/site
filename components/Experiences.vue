@@ -12,17 +12,17 @@
                 </div>
                 <div class="ten wide column">
                     <div class="ui grid">
-                        <div class="row" v-for="(experience, key) in experiences" :key="key">
+                        <div class="row" v-for="(experience, index) in experiencesSorted" :key="index">
                             <div class="three wide column">
-                                <img :src="experience.logo" :alt="'Logo ' + key" class="ui circular medium image">
+                                <img :src="experiences[experience].logo" :alt="'Logo ' + experience" class="ui medium circular image">
                             </div>
                             <div class="thirteen wide column">
                                 <h4 class="ui header">
-                                    {{ experience.empresa }} - {{ experience.cargo }}
+                                    {{ experiences[experience].empresa }} - {{ experiences[experience].cargo }}
                                     <br>
-                                    {{ experience.tempo }}
+                                    {{ experiences[experience].tempo }}
                                     <div class="sub header">
-                                        {{ experience.descricao }}
+                                        {{ experiences[experience].descricao }}
                                     </div>
                                 </h4>
                             </div>
@@ -42,7 +42,8 @@ export default {
 
     data(){
         return {
-            experiences: {}
+            experiences: {},
+            experiencesSorted: []
         }
     },
 
@@ -51,6 +52,14 @@ export default {
         .then((snapshot) => [
             this.experiences = snapshot.data()
         ])
+    },
+
+    watch: {
+        experiences: function() {
+            this.experiencesSorted = Object.keys(this.experiences).sort((a,b) => {
+                return this.experiences[a].ordem - this.experiences[b].ordem;
+            })
+        }
     }
 }
 </script>
